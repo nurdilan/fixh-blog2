@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fixh | Minimalist Space</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">fixh.</a>
+        <div class="nav-links">
+            <a href="blog2.html">Beranda</a>
+            <a href="tentang.html">Tentang</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Eksplorasi Ruang Digital.</h1>
+        <p>Catatan, eksperimen kode, dan visual dari fixh.</p>
+    </header>
+
+    <main class="container" id="scroll-container">
+        <a href="developer.html" class="card">
+            <div class="card-img img-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">developer</h2>
+                <p class="card-excerpt">Eksplorasi pengembangan front-end dan pembuatan antarmuka modern.</p>
+            </div>
+        </a>
+
+        <a href="website.html" class="card">
+            <div class="card-img img-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon></svg>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">website</h2>
+                <p class="card-excerpt">Kumpulan project web, tata letak responsif, dan optimasi performa.</p>
+            </div>
+        </a>
+
+        <a href="code.html" class="card">
+            <div class="card-img img-3">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">code</h2>
+                <p class="card-excerpt">Eksperimen logika JavaScript, penyimpanan lokal, dan fungsionalitas.</p>
+            </div>
+        </a>
+
+        <a href="account.html" class="card">
+            <div class="card-img img-4">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">account</h2>
+                <p class="card-excerpt">Kelola profil, pengaturan data pengguna, dan integrasi akun.</p>
+            </div>
+        </a>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 fixh. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const container = document.getElementById('scroll-container');
+        container.addEventListener('wheel', (e) => {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+                container.scrollLeft += e.deltaY;
+            }
+        });
+    </script>
+</body>
+</html>

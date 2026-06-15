@@ -1,0 +1,945 @@
+/* CSS Variables untuk Tema */
+:root {
+    --bg-color: #fafafc;
+    --text-primary: #121214;
+    --text-secondary: #71717a;
+    --card-bg: #ffffff;
+    --border-color: #e4e4e7;
+    --accent-color: #000000;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; /* Mencegah seluruh halaman bergoyang */
+}
+
+/* Navigasi */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    margin-left: 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Bagian Hero */
+.hero {
+    max-width: 800px;
+    margin: 4rem auto 3rem;
+    padding: 0 5%;
+    text-align: center;
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.hero h1 {
+    font-size: clamp(2.3rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* KUNCI UTAMA: Kontainer Flex Menyamping dengan Fitur Scroll */
+.container {
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    padding: 1rem 5%;
+    
+    display: flex;            /* Memaksa elemen di dalamnya sejajar menyamping */
+    gap: 1.5rem;
+    overflow-x: auto;         /* Mengaktifkan scroll horizontal jika tidak muat */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Membuat scroll terasa mulus di iOS/HP */
+}
+
+/* Menyembunyikan scrollbar bawaan browser agar tetap terlihat minimalis */
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Kartu / Kotak */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    
+    flex: 0 0 280px;          /* KUNCI: Kotak tidak akan mengecil/gepeng, lebarnya dikunci di 280px */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+/* Delay animasi */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+    border-color: transparent;
+}
+
+/* Area Gambar / Logo */
+.card-img {
+    height: 140px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Background halus yang berbeda untuk tiap logo */
+.card-img.img-1 { background-color: #eff6ff; color: #3b82f6; }
+.card-img.img-2 { background-color: #f5f3ff; color: #8b5cf6; }
+.card-img.img-3 { background-color: #ecfdf5; color: #10b981; }
+.card-img.img-4 { background-color: #fff7ed; color: #f97316; }
+
+/* Ukuran Logo SVG */
+.card-img svg {
+    width: 42px;
+    height: 42px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img svg {
+    transform: scale(1.1); /* Efek membesar sedikit saat kartu di-hover */
+}
+
+.card-content {
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-transform: lowercase;
+    letter-spacing: -0.5px;
+}
+
+.card-excerpt {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Animasi Masuk */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsif Layar Kecil */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    .hero {
+        margin: 2.5rem auto 1.5rem;
+    }
+    .container {
+        padding: 1rem 1.5rem; /* Memberikan ruang ekstra di pinggir saat di-scroll di HP */
+    }
+}
+
+/* =========================================
+   TAMBAHAN CSS UNTUK HALAMAN TENTANG 
+   ========================================= */
+
+.about-wrapper {
+    max-width: 800px;
+    margin: 3rem auto 5rem;
+    padding: 0 5%;
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.about-header h1 {
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
+}
+
+.about-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.about-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.04);
+    border-color: transparent;
+}
+
+.about-card h2 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+}
+
+.about-card p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* Penanda halaman aktif di navigasi */
+.nav-links a.active {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+/* Responsif untuk halaman Tentang */
+@media (max-width: 600px) {
+    .about-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Update Root & Global */
+:root {
+    --bg-color: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #666666;
+    --accent-glow: rgba(0, 0, 0, 0.05);
+    --border-color: #eeeeee;
+}
+
+/* Animasi Halus */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Layout Tentang */
+.about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 5%;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Judul Tengah (Hero) */
+.about-hero {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.badge {
+    background: #f0f0f0;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.about-hero h1 {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -3px;
+    color: var(--text-primary);
+}
+
+.about-hero h1 span {
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+/* Kotak Konten */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 8rem;
+}
+
+.about-section {
+    position: relative;
+    padding-top: 2rem;
+}
+
+.section-number {
+    font-size: 14px;
+    font-weight: 800;
+    color: #ccc;
+    margin-bottom: 1rem;
+    font-family: monospace;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.about-section p strong {
+    color: var(--text-primary);
+}
+
+/* Responsif HP */
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .about-hero {
+        height: 50vh;
+    }
+    
+    .about-hero h1 {
+        font-size: 3.5rem;
+    }
+}
+
+/* =========================================
+   TAMBAHAN CSS UNTUK HALAMAN CODE 
+   ========================================= */
+
+.code-wrapper {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 5%;
+    animation: fadeInUp 1s ease-out;
+}
+
+.code-central-box {
+    max-width: 900px;
+}
+
+.code-badge {
+    display: inline-block;
+    background: #000000;
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.code-central-box h1 {
+    font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -2px;
+    color: var(--text-primary);
+}
+
+/* Style Khusus untuk Angka Kontak */
+.code-highlight {
+    font-family: monospace;
+    background: #f0f0f0;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.95em;
+    color: #000;
+}
+
+/* Style Minimalis Link Website */
+.web-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    border-bottom: 3px solid var(--text-primary);
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+}
+
+.web-link:hover {
+    background: var(--text-primary);
+    color: var(--bg-color);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Penyelarasan Animasi FadeUp jika belum ada */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Optimasi Layar HP */
+@media (max-width: 768px) {
+    .code-wrapper {
+        height: 60vh;
+    }
+    .code-central-box h1 {
+        letter-spacing: -1px;
+        line-height: 1.5;
+    }
+}
+
+/* =========================================
+   PREMIUM CODE PAGE STYLES
+   ========================================= */
+
+/* Tema Gelap Khusus Halaman Code */
+.dark-theme {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+.nav-minimal {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 5%;
+    z-index: 10;
+}
+
+.code-hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Efek Cahaya di Belakang Teks */
+.glow-effect {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.2) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(40px);
+    z-index: 0;
+}
+
+.central-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    padding: 0 20px;
+}
+
+.status-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 2rem;
+    border: 1px solid #333;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 50px;
+}
+
+.central-content h1 {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -3px;
+    margin-bottom: 1.5rem;
+}
+
+/* Sorotan untuk Nomor ID */
+.highlight {
+    color: #4f46e5; /* Indigo accent */
+    background: rgba(79, 70, 229, 0.1);
+    padding: 0 10px;
+    border-radius: 8px;
+}
+
+/* Link yang Bercahaya */
+.link-glow {
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 2px solid #4f46e5;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.link-glow:hover {
+    color: #4f46e5;
+    border-bottom-color: #ffffff;
+    text-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
+}
+
+.sub-text {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 1rem;
+}
+
+/* Animasi Fade In */
+.central-content {
+    animation: reveal 1.2s ease-out forwards;
+}
+
+@keyframes reveal {
+    from { opacity: 0; transform: scale(0.95) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Responsif Mobile */
+@media (max-width: 768px) {
+    .central-content h1 {
+        letter-spacing: -1px;
+    }
+}
+
+/* =========================================
+   PREMIUM WEBSITE SHOWCASE STYLES
+   ========================================= */
+
+/* Tema Terang Eksklusif & Minimalis */
+.showcase-theme {
+    background-color: #f8f9fa !important;
+    color: #121214 !important;
+}
+
+.showcase-container {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 5%;
+    gap: 3.5rem;
+    animation: showcaseReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.showcase-box {
+    max-width: 750px;
+    width: 100%;
+    padding: 2.5rem;
+    background: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 24px;
+    transition: all 0.4s ease;
+}
+
+.showcase-box:hover {
+    transform: translateY(-8px);
+    border-color: #000000;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+}
+
+.showcase-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #71717a;
+    margin-bottom: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.showcase-box h2 {
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -1.5px;
+    color: #121214;
+    margin-bottom: 1.8rem;
+}
+
+/* Style Tombol URL / Link */
+.showcase-url {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #000000;
+    text-decoration: none;
+    padding: 12px 28px;
+    border: 2px solid #000000;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+}
+
+.showcase-url i {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.showcase-url:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+.showcase-url:hover i {
+    transform: translate(2px, -2px);
+}
+
+/* Variasi Tombol Kedua agar Lebih Menarik */
+.highlight-url {
+    background: #000000;
+    color: #ffffff;
+}
+
+.highlight-url:hover {
+    background: transparent;
+    color: #000000;
+}
+
+/* Garis Pembatas Minimalis */
+.showcase-divider {
+    width: 50px;
+    height: 1px;
+    background: #e4e4e7;
+    position: relative;
+}
+
+/* Animasi Masuk */
+@keyframes showcaseReveal {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Optimasi Layar HP */
+@media (max-width: 768px) {
+    .showcase-container {
+        padding: 6rem 5% 4rem;
+        gap: 2rem;
+    }
+    .showcase-box {
+        padding: 1.8rem 1.2rem;
+    }
+    .showcase-box h2 {
+        letter-spacing: -0.5px;
+    }
+}
+
+/* =========================================
+   PREMIUM DEVELOPER PAGE STYLES
+   ========================================= */
+
+.dev-wrapper {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 5% 4rem;
+}
+
+/* Efek cahaya ambient di background */
+.dev-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(50px);
+    z-index: 0;
+}
+
+.dev-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.dev-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #888;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.dev-title {
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -2.5px;
+    color: #ffffff;
+    margin-bottom: 4rem;
+    text-transform: capitalize;
+}
+
+/* Container Dua Nama */
+.dev-team {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Kotak Nama (Card) */
+.dev-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2.5rem 2rem;
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dev-avatar {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #888;
+    margin-bottom: 1.5rem;
+    transition: all 0.4s ease;
+}
+
+.dev-card h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+}
+
+.dev-card p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Efek Hover Interaktif */
+.dev-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.05);
+}
+
+.dev-card:hover .dev-avatar {
+    background: #4f46e5;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+}
+
+/* Membedakan Sedikit Kartu Utama (fixh) */
+.main-dev {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Optimasi Layar HP */
+@media (max-width: 650px) {
+    .dev-title {
+        letter-spacing: -1px;
+        margin-bottom: 2.5rem;
+    }
+    .dev-team {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .dev-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* =========================================
+   PREMIUM ACCOUNT PAGE STYLES
+   ========================================= */
+
+.account-hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 0 5%;
+}
+
+/* Efek cahaya ambient merah/oranye halus di background */
+.alert-glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.1) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(40px);
+    z-index: 0;
+}
+
+.account-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    animation: accountReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Ikon Gembok / User Hilang */
+.lock-icon {
+    font-size: 2.5rem;
+    color: #ef4444; /* Warna merah tanda peringatan halus */
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.account-title {
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -2px;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.account-sub {
+    font-size: 1rem;
+    color: #4b5563;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+}
+
+/* Tombol Premium Back to Home */
+.btn-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #ffffff;
+    color: #000000;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.05);
+}
+
+.btn-home i {
+    transition: transform 0.3s ease;
+}
+
+/* Efek Hover Tombol */
+.btn-home:hover {
+    background: #ef4444; /* Berubah jadi merah saat di-hover agar interaktif */
+    color: #ffffff;
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(239, 68, 68, 0.2);
+}
+
+.btn-home:hover i {
+    transform: translateX(-4px); /* Ikon panah bergeser ke kiri */
+}
+
+/* Animasi memunculkan halaman */
+@keyframes accountReveal {
+    from { opacity: 0; transform: scale(0.98) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Optimasi Layar HP */
+@media (max-width: 768px) {
+    .account-title {
+        letter-spacing: -1px;
+    }
+}
